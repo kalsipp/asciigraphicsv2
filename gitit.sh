@@ -9,4 +9,4 @@ git add imgcontainer.cpp
 git add imgcontainer.hpp
 git add img_conv_stolen.py
 git commit -m "Forked, reworking into pixelsystem"
-git push origin master
+git push upstream master
