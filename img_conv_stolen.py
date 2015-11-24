@@ -367,7 +367,7 @@ if __name__ == '__main__':
             h = "%2x%2x%2x" % (p[0],p[1],p[2])
             short, rgb = rgb2short(h)
             
-            f.write("\033[48;5;%sm  " % short)
+            f.write("\033[48;5;%sm  @" % short)
             #sys.stdout.write("\033[48;5;%sm  " % short)
         f.write("\033[0m\n")
         #sys.stdout.write("\033[0m\n")

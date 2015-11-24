@@ -8,5 +8,6 @@ git add gitit.sh
 git add imgcontainer.cpp
 git add imgcontainer.hpp
 git add img_conv_stolen.py
-git commit -m "Forked, reworking into pixelsystem"
+git add img_output
+git commit -m "imgcontainers pixelsystem done"
 git push upstream master
