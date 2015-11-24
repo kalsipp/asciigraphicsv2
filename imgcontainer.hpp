@@ -11,6 +11,7 @@ class Img_container{
   void print_img();
  private:
   std::vector<std::string> image_text;
+  std::vector<std::vector<std::string>> img_txt;
   //std::vector<std::vector<std::string>> image_text_new;
   void img_to_str_vector(std::string filename, std::vector<std::string> & im_text_ref);
   

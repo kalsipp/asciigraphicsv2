@@ -63,7 +63,7 @@ void Textgrafs::clear(){
   std::cout << "\033[2J";
 }
 void Textgrafs::save_old_grid(){
-  for(int i = 0; i < grid.size() ; ++i){
+  for(unsigned int i = 0; i < grid.size() ; ++i){
     if(0!=grid[i].compare(old_grid[i])){
       old_grid[i] = grid[i];
     }
@@ -74,7 +74,7 @@ void Textgrafs::print(){
  
     
     cursorpos(0,0);
-    for(int y = 0; y < rows_ ; ++y){ //Generate the full grid
+    for(unsigned int y = 0; y < rows_ ; ++y){ //Generate the full grid
           s+= grid[y];
 	  s+= "\n";
     }
@@ -101,7 +101,7 @@ void Textgrafs::print_img(std::vector<std::string> & img_ref, int px, int py, in
  //This function prints out an image, meant to deal with ascii escape code formatted images with color. 
   //Don't try to do high framerate animations with this.
   //Cannot truncate overflow in x-axis at the moment due to that every pixel is actually around 11 letters.  
-  for(int i = min_size_y; i < img_ref.size(); ++i){
+  for(unsigned int i = min_size_y; i < img_ref.size(); ++i){
     cursorpos(px, py+i-min_size_y);
     if(i +py-min_size_y>= rows_) break;
     if(i+py -min_size_y>= max_size_y) break;
@@ -161,7 +161,7 @@ void Textgrafs::add_col(std::string text, int px, int py){
     text.erase((rows_-py), text.length());
   }
   std::string s;
-  for(int i = py;  i < py+text.length(); ++i){
+  for(unsigned int i = py;  i < py+text.length(); ++i){
     //std::cout << "i " << i << std::endl;
     s.assign(text, i-py, 1);
     add_row(s, px, i);
@@ -177,7 +177,7 @@ void Textgrafs::add_rect(char letter, int px, int py, int sizex, int sizey){
 }
 
 void Textgrafs::add_rect_unique(const std::vector<std::string> & shape, int px, int py){
-  for(int i = 0; i<shape.size();++i){
+  for(unsigned int i = 0; i<shape.size();++i){
     add_row(shape[i], px, py+i);
   }
 }
