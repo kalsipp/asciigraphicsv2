@@ -16,7 +16,7 @@ __author__    = 'Micah Elliott http://MicahElliott.com; Kevin Lange <k@dakko.us>
 __version__   = '0.1'
 __copyright__ = 'Copyright (C) 2011 Micah Elliott.  All rights reserved.'
 __license__   = 'WTFPL http://sam.zoy.org/wtfpl/'
-
+#This copy modified 
 #---------------------------------------------------------------------
 
 import sys, re
@@ -369,8 +369,8 @@ if __name__ == '__main__':
             
             f.write("\033[48;5;%sm  @" % short)
             #sys.stdout.write("\033[48;5;%sm  " % short)
-            sys.stdout.write("%s\n" % short)
-        f.write("\033[0m") #+ \n at end
+            #sys.stdout.write("%s\n" % short)
+        f.write("\033[0m\n") #+ \n at end
         #sys.stdout.write("\033[0m\n")
     #f.write("")
     #sys.stdout.write("\n")

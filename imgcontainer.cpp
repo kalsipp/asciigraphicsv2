@@ -28,7 +28,6 @@ void Img_container::img_to_str_vector(std::string filename, std::vector<std::vec
     std::string tempstr;
     while(std::getline(file, tempstr)){
       std::vector<std::string> tempvec;
-      std::cout <<"HOY" << std::endl;
       while(tempstr.length() > 12){ // > smallest length TODO
 	//Go through this row, chop it up into induvidual "pixels" and add them to their proper place in the vectorvector
 	std::string s;

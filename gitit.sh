@@ -9,5 +9,5 @@ git add imgcontainer.cpp
 git add imgcontainer.hpp
 git add img_conv_stolen.py
 git add img_output
-git commit -m "imgcontainers pixelsystem done"
+git commit -m "textgraphics pixelsystem in progress"
 git push upstream master
