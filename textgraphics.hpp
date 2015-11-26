@@ -4,6 +4,7 @@
 #include <string>
 #include <chrono>
 #include <climits>
+#include "pixel.hpp"
 
 class Textgrafs{
 public:
@@ -15,6 +16,7 @@ public:
   void add_border(char letter, int px, int py, int sizex, int sizey);
   void add_rect_unique(const std::vector<std::string> & shape , int px, int py);
   void add_ellipse(char letter, int px, int py, int rx, int ry); //Broken
+  void add_image(std::vector<std::vector<std::string>> & , int, int);
   void print(); //Prints one grid
   void print_img(std::vector<std::string>&, int px, int py, int max_size_y = INT_MAX, int min_size_y = 0);
   bool next_tick(); //Should be private
@@ -33,6 +35,7 @@ private:
   bool debug = false;
   double time_between_frames_ = 0.005;
   std::vector<std::string> grid;
+  std::vector<std::vector<std::string>> screen;
   std::vector<std::string> old_grid;
 };
 

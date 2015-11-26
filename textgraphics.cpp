@@ -9,7 +9,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include "textgraphics.hpp"
-
+#include "pixel.hpp"
 //#### Special member functions ####
 //#### Constructor
 Textgrafs::Textgrafs(){ 
@@ -25,7 +25,10 @@ Textgrafs::Textgrafs(){
   std::string s(cols_, ' ');
   grid.resize(rows_,s);
   old_grid.resize(rows_,s);
-
+  std::vector<std::string> p;
+  std::string k = "  ";
+  p.resize(cols_*0.5,k);
+  screen.resize(rows_,p);
   timer_ = std::chrono::system_clock::now(); //First timepoint
   
 }
@@ -69,23 +72,48 @@ void Textgrafs::save_old_grid(){
     }
   }
 }
-void Textgrafs::print(){
-    std::string s;
- 
-    
-    cursorpos(0,0);
-    for(unsigned int y = 0; y < rows_ ; ++y){ //Generate the full grid
-          s+= grid[y];
-	  s+= "\n";
-    }
-    s.pop_back(); //Remove last \n
-    //write(1, s.c_str(), s.length()); //works 
-    
-    std::cout << s;//works
-    
-    //printf(s.c_str()); //bad
-}
+//void Textgrafs::print(){
+//std::string s;
 
+
+//cursorpos(0,0);
+//for(unsigned int y = 0; y < rows_ ; ++y){ //Generate the full grid
+// s+= grid[y];
+//s+= "\n";
+// }
+//s.pop_back(); //Remove last \n
+//write(1, s.c_str(), s.length()); //works 
+
+//std::cout << s;//works
+
+//printf(s.c_str()); //bad
+//}
+void Textgrafs::add_image(std::vector<std::vector<std::string>> & img_ref, int px, int py){
+  std::cout << "Rows " << screen.size() << std::endl;
+  std::cout << "Cols " << screen[1].size() << std::endl;
+  std::cout << "Sizey " << img_ref.size() << std::endl;
+  std::cout << "Sizex " << img_ref[0].size() << std::endl;
+  for(int y = 0; y < img_ref.size(); ++y){
+    if( y >= rows_)break;
+    for(int x = 0; x < img_ref[y].size(); ++x){
+      screen[y+py][x+px] = img_ref[y][x];
+    }
+  }
+}
+void Textgrafs::print(){
+  cursorpos(0,0);
+  std::string s;
+  for(int y = 0; y < screen.size(); ++y){
+    for(int x = 0; x < screen[y].size();++x){
+      s+= screen[y][x];
+    }
+    s+= "\n";
+   
+    
+  }
+  s.pop_back();
+  std::cout << s;
+}
 void Textgrafs::print_img(std::vector<std::string> & img_ref, int px, int py, int max_size_y, int min_size_y){
   //Dealing with scrap input
   if(img_ref.size() <=0) return; 

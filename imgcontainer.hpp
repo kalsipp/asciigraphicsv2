@@ -7,14 +7,11 @@
 class Img_container{
  public:
   Img_container(std::string filename);
-  std::vector<std::string> & get_img_text();
-  void print_img();
+  std::vector<std::vector<std::string>> & get_img();
+  void print_img(); //To be removed post debug
  private:
-  std::vector<std::string> image_text;
   std::vector<std::vector<std::string>> img_txt;
-  //std::vector<std::vector<std::string>> image_text_new;
-  void img_to_str_vector(std::string filename, std::vector<std::string> & im_text_ref);
-  
+  void img_to_str_vector(std::string filename, std::vector<std::vector<std::string>> & im_text_ref);
 };
 
 

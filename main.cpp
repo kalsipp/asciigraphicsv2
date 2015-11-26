@@ -4,11 +4,14 @@
 #include <vector>
 #include <unistd.h> 
 int main(){
-  //Textgrafs p;
-  //p.clear();
+  Textgrafs p;
+  p.clear();
   Img_container i("img_output");
+  p.add_image(i.get_img(), 0,0);
+  p.print();
   while(1){
     //p.clear_grid();
+    
     //p.add_border('#', 0, 0, p.cols_, p.rows_);
     //p.add_border('#', 2, 2, p.cols_-4, p.rows_-4);
     //p.add_row("Billions upon billions.", 54, p.rows_-2);

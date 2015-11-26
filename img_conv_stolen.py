@@ -369,8 +369,9 @@ if __name__ == '__main__':
             
             f.write("\033[48;5;%sm  @" % short)
             #sys.stdout.write("\033[48;5;%sm  " % short)
-        f.write("\033[0m\n")
+            sys.stdout.write("%s\n" % short)
+        f.write("\033[0m") #+ \n at end
         #sys.stdout.write("\033[0m\n")
-    f.write("\n")
+    #f.write("")
     #sys.stdout.write("\n")
     f.close()
