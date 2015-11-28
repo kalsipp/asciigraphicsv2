@@ -35,10 +35,6 @@ Textgrafs::Textgrafs(){
   timer_ = std::chrono::system_clock::now(); //First timepoint
   
 }
-//#### Destructor
-Textgrafs::~Textgrafs(){
-  //Actually don't need one right now
-}
 
 //#### Member functions
 void Textgrafs::paint(){
@@ -64,6 +60,7 @@ std::string Textgrafs::cursorpos_str(int px, int py){
   return s;
 }
 void Textgrafs::hide_cursor(){
+  //TODO look up this code
 }
 void Textgrafs::clear_screen(){
   std::cout << "\033[2J";
@@ -81,6 +78,21 @@ void Textgrafs::add_image(std::vector<std::vector<std::string>> & img_ref, int p
     }
   }
 }
+void Textgrafs::add_image(std::vector<std::vector<Pixel>> & imgref, int px, int py){
+  for(int y = 0; y <  imgref.size(); ++y){
+    for(int x = 0; x < imgref[y].size(); ++x){
+      add_pixel(imgref[y][x], px+x, py+y);
+    }
+  }
+}
+
+void Textgrafs::add_rect(const Pixel & p, int px, int py, int sizex, int sizey){
+  for(int y = py; y < py+sizey; ++y){
+    for(int x = px; x < px+sizex; ++x){
+      add_pixel(p, x, y);
+    }
+  }
+}
 void Textgrafs::print(){
   cursorpos(0,0);
   std::string s;
@@ -88,10 +100,17 @@ void Textgrafs::print(){
     for(int x = 0; x < grid[y].size();++x){
       s+= grid[y][x];
     }
-    s+= "\n";
+    s+= "\033[0m\n";
   }
   s.pop_back();
   std::cout << s;
+}
+void Textgrafs::fill_grid(const Pixel & p){
+  for(int y = 0; y < rows_; ++y){
+    for(int x = 0; x < cols_; ++x){
+      add_pixel(p, x, y);
+    }
+  }
 }
 void Textgrafs::clear_grid(){
   //Fills the grid with space
@@ -101,6 +120,14 @@ void Textgrafs::clear_grid(){
       add_pixel(p, x, y);
     }
   }
+}
+void Textgrafs::clear_grid_specific(int px, int py, int sizex, int sizey){
+  for(int y = py; y < py+sizey; ++y){
+    for(int x = px; x < px+sizex; ++x){
+      Pixel p;
+      add_pixel(p,x,y);
+    }
+  } 
 }
 bool Textgrafs::next_tick(){
   //Calculate next frame
@@ -113,14 +140,17 @@ bool Textgrafs::next_tick(){
   
 }
 void Textgrafs::add_pixel(const Pixel & p, int px, int py){
-  if(px < 0 || px >= cols_-10) return;
+  if(px < 0 || px >= cols_) return;
   if(py < 0 || py >= rows_) return;
+
   grid[py][px] = p.get_str();
 }
 void Textgrafs::add_border(const Pixel & p, int px, int py, int sizex, int sizey){
-  for(int y = 0; y < py+sizey; ++y){
-    for(int x = 0; x < px+sizex; ++x){
-      if(x == px || y == py || px == sizex || py == sizey) add_pixel(p, x, y);
+  for(int y = py; y < py+sizey+1; ++y){
+    for(int x = px; x < px+sizex+1; ++x){
+      if(x == px || y == py || x == px+sizex || y == py+sizey){
+	add_pixel(p, x, y);
+      }
     }
   }
 }

@@ -370,7 +370,8 @@ if __name__ == '__main__':
             f.write("\033[48;5;%sm  @" % short)
             #sys.stdout.write("\033[48;5;%sm  " % short)
             #sys.stdout.write("%s\n" % short)
-        f.write("\033[0m\n") #+ \n at end
+        #f.write("\033[0m\n") #+ \n at end
+        f.write("\n");
         #sys.stdout.write("\033[0m\n")
     #f.write("")
     #sys.stdout.write("\n")

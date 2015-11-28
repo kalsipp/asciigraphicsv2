@@ -32,7 +32,7 @@ void Img_container::img_to_str_vector(std::string filename, std::vector<std::vec
 	//Go through this row, chop it up into induvidual "pixels" and add them to their proper place in the vectorvector
 	std::string s;
 	while(tempstr[0] != '@'){
-	  s+= tempstr[0];
+	  if(tempstr[0] != '\n')s+= tempstr[0];
 	  if(tempstr.length() == 0) break;
 	  tempstr.erase(tempstr.begin());
 	}
@@ -42,7 +42,10 @@ void Img_container::img_to_str_vector(std::string filename, std::vector<std::vec
 	//As the strings may be of different length, the letter @ has been added to separate them. (\033 is difficult to compare)
 	if(tempstr[0] == '@')tempstr.erase(tempstr.begin());
       }
-      tempvec.push_back(tempstr);
+      for(int i = 0; i < tempstr.length() ; ++i){
+	if(tempstr[i] == '\n') tempstr.erase(i); 
+      }
+      //tempvec.push_back(tempstr);
       im_text_ref.push_back(tempvec);
     } 
     file.close();
