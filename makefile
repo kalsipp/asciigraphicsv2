@@ -11,6 +11,6 @@ imgcontainer.o: imgcontainer.cpp
 pixel.o: pixel.cpp
 	$(CC) $(FLAGS) -c -o pixel.o pixel.cpp
 gameobject.o: gameobject.cpp
-	$(CC) $(FLAGS) -c -o gameobject.cpp gameobject.o
+	$(CC) $(FLAGS) -c -o gameobject.o gameobject.cpp
 clean:
 	rm -f *.o *.out

@@ -9,5 +9,8 @@ git add imgcontainer.cpp
 git add imgcontainer.hpp
 git add img_conv_stolen.py
 git add img_output
+git add gameobject.cpp
+git add pixel.hpp
+git add pixel.cpp
 git commit -m "textgraphics pixelsystem in progress"
 git push upstream master
