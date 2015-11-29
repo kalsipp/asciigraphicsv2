@@ -12,5 +12,5 @@ git add img_output
 git add gameobject.cpp
 git add pixel.hpp
 git add pixel.cpp
-git commit -m "textgraphics pixelsystem in progress"
+git commit -m "Converting into gameobject based system"
 git push upstream master
