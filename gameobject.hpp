@@ -1,6 +1,6 @@
 #ifndef GAMEOBJECT_HPP
 #define GAMEOBJECT_HPP
-#include <pixel.hpp>
+#include "pixel.hpp"
 #include <string>
 #include <vector>
 class Gameobject{

@@ -10,6 +10,7 @@
 #include <unistd.h>
 #include "textgraphics.hpp"
 #include "pixel.hpp"
+
 //#### Special member functions ####
 //#### Constructor
 Textgrafs::Textgrafs(){ 
@@ -155,3 +156,17 @@ void Textgrafs::add_border(const Pixel & p, int px, int py, int sizex, int sizey
   }
 }
 
+void Textgrafs::add_gameobject(Gameobject & g, int key){
+  if(objects.count(key) == 0){
+    objects[key] = g;
+  }
+  else{
+    objects.erase(key);
+    objects[key] = g;
+  }
+}
+void Textgrafs::remove_gameobject(int key){
+  if(objects.count(key) == 1){
+    objects.erase(key);
+  }
+}

@@ -4,8 +4,9 @@
 #include <string>
 #include <chrono>
 #include <climits>
+#include <map>
 #include "pixel.hpp"
-
+#include "gameobject.hpp"
 class Textgrafs{
 public:
   Textgrafs();
@@ -15,6 +16,9 @@ public:
   void add_image(std::vector<std::vector<std::string>> & , int px, int py);
   void add_image(std::vector<std::vector<Pixel>> &, int px, int py);
   void add_rect(const Pixel & p, int px, int py, int sizex, int sizey);
+  void add_gameobject(Gameobject & g, int key);
+  void remove_gameobject(int key);
+  //void remove_gameobject; How should I 
   void print(); //Prints one grid
   bool next_tick(); //Should be private
   void paint(); //For continuous animation
@@ -35,6 +39,7 @@ private:
   double time_between_frames_ = 0.005;
   std::vector<std::vector<std::string>> grid;
   std::vector<std::vector<std::string>> old_grid;
+  std::map<int, Gameobject> objects;
 };
 
 #endif
