@@ -155,7 +155,7 @@ void Textgrafs::add_border(const Pixel & p, int px, int py, int sizex, int sizey
     }
   }
 }
-
+/*
 void Textgrafs::add_gameobject(Gameobject & g, int key){
   if(objects.count(key) == 0){
     objects[key] = g;
@@ -170,3 +170,4 @@ void Textgrafs::remove_gameobject(int key){
     objects.erase(key);
   }
 }
+*/

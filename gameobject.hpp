@@ -3,18 +3,22 @@
 #include "pixel.hpp"
 #include <string>
 #include <vector>
+#include "imgcontainer.hpp"
 class Gameobject{
 public:
-  Gameobject(const std::vector<std::vector<Pixel>> & img, int px = 0, int py = 0, int sizex = 0, int sizey = 0);
-  const std::vector<std::vector<Pixel>> & get_img() const;
-  void set_img(const std::vector<std::vector<Pixel>> & img);
-  void set_pixel(const Pixel & p, int px, int py);
+  Gameobject(const Img_container & img, int px = 0, int py = 0, int sizex = 0, int sizey = 0);
+  const Img_container & get_img() const;
+  void set_img(const Img_container & img);
+  //void set_pixel(const Pixel & p, int px, int py);
+  //void clear_img();
   int sizex_; //Only rects allowed
   int sizey_;
   int px_;
   int py_;
 private:
-  std::vector<std::vector<Pixel>> img_;
-
+protected:
+  Img_container img_;
+  //std::vector<std::vector<Pixel>> img_;
+  
 };
 #endif
