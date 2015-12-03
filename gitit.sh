@@ -14,5 +14,6 @@ git add gameobject.hpp
 git add pixel.hpp
 git add pixel.cpp
 git add textbox.cpp
+git add imgtext3.jpg
 git commit -m "Converting into gameobject based system"
 git push upstream master

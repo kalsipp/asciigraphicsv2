@@ -1,5 +1,5 @@
 CC = g++
-# CC = clang
+#CC = clang
 FLAGS = -std=c++11 
 
 main.out: main.cpp textgraphics.o imgcontainer.o pixel.o gameobject.o textbox.o

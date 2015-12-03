@@ -6,16 +6,10 @@
 //#include <iostream>
 
 
-Gameobject::Gameobject(const Img_container & img, int px, int py, int sizex, int sizey){
-  px_ = px;
-  py_ = py;
-  img_(img);
-}
+Gameobject::Gameobject(Img_container & img, int px, int py, int sizex, int sizey):img_(img), px_(px), py_(py), sizex_(sizex), sizey_(sizey){}
+Gameobject::Gameobject(){}
 const Img_container & Gameobject::get_img()const { return img_;}
-void Gameobject::set_img(const Img_container & img){
-  img_ = img;
-}
-
+void Gameobject::set_img(const Img_container & img){img_ = img;}
 /*
 void Gameobject::set_pixel(const Pixel & p, int px, int py){
   if(py < 0 || py > img_.size()) return;

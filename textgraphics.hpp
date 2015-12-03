@@ -13,9 +13,10 @@ public:
 
   void add_border(const Pixel & p, int px, int py, int sizex, int sizey);
   void add_pixel(const Pixel & p, int px, int py);
-  void add_image(std::vector<std::vector<std::string>> & , int px, int py);
+  //void add_image(std::vector<std::vector<std::string>> & , int px, int py);
   void add_image(std::vector<std::vector<Pixel>> &, int px, int py);
   void add_rect(const Pixel & p, int px, int py, int sizex, int sizey);
+  //WIP Should textgrafs hold gameobjects?
   void add_gameobject(Gameobject & g, int key);
   void remove_gameobject(int key);
   //void remove_gameobject; How should I 

@@ -6,7 +6,7 @@
 #include "imgcontainer.hpp"
 class Gameobject{
 public:
-  Gameobject(const Img_container & img, int px = 0, int py = 0, int sizex = 0, int sizey = 0);
+  Gameobject(Img_container & img, int px = 0, int py = 0, int sizex = 0, int sizey = 0);
   const Img_container & get_img() const;
   void set_img(const Img_container & img);
   //void set_pixel(const Pixel & p, int px, int py);
@@ -17,8 +17,11 @@ public:
   int py_;
 private:
 protected:
+
+  Gameobject();
   Img_container img_;
   //std::vector<std::vector<Pixel>> img_;
   
 };
+
 #endif

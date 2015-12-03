@@ -69,7 +69,8 @@ void Textgrafs::clear_screen(){
 
 void Textgrafs::save_old_grid(){
   old_grid = grid;
-} 
+}
+/* 
 void Textgrafs::add_image(std::vector<std::vector<std::string>> & img_ref, int px, int py){
   
   for(int y = 0; y < img_ref.size(); ++y){
@@ -79,6 +80,7 @@ void Textgrafs::add_image(std::vector<std::vector<std::string>> & img_ref, int p
     }
   }
 }
+*/
 void Textgrafs::add_image(std::vector<std::vector<Pixel>> & imgref, int px, int py){
   for(int y = 0; y <  imgref.size(); ++y){
     for(int x = 0; x < imgref[y].size(); ++x){
