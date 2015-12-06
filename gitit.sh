@@ -5,6 +5,7 @@ git add main.cpp
 git add makefile
 git add run.sh
 git add gitit.sh
+git add gitupdate.sh
 git add imgcontainer.cpp
 git add imgcontainer.hpp
 git add img_conv_stolen.py
