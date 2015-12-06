@@ -10,7 +10,7 @@
 #include <unistd.h>
 #include "textgraphics.hpp"
 #include "pixel.hpp"
-
+#include "imgcontainer.hpp"
 //#### Special member functions ####
 //#### Constructor
 Textgrafs::Textgrafs(){ 
@@ -81,12 +81,16 @@ void Textgrafs::add_image(std::vector<std::vector<std::string>> & img_ref, int p
   }
 }
 */
-void Textgrafs::add_image(std::vector<std::vector<Pixel>> & imgref, int px, int py){
+void Textgrafs::add_image(const std::vector<std::vector<Pixel>> & imgref, int px, int py){
   for(int y = 0; y <  imgref.size(); ++y){
     for(int x = 0; x < imgref[y].size(); ++x){
       add_pixel(imgref[y][x], px+x, py+y);
     }
   }
+}
+
+void Textgrafs::add_image(const Img_container & img, int px, int py){
+  add_image(img.get_img(), px, py);
 }
 
 void Textgrafs::add_rect(const Pixel & p, int px, int py, int sizex, int sizey){

@@ -1,40 +1,34 @@
-#ifndef TEXTBOX_HPP
-#define TEXTBOX_HPP
-#include "gameobject.hpp"
-#include <string>
+#include "textbox.hpp"
+#include "pixel.hpp"
 #include <vector>
-class Gameobject;
-class Textbox:public Gameobject{
-  /*Textbox handles nicely formatted text output
-The system will simply say "Add row" and the class will append the new text to the bottom, shift the text up and remove the oldest text. 
-
-It's the handlers job not to print more than the textbox's capacity (vertically).
-
-Horizontal overflow will be truncated.
-No extra effects added from class
-  */
-public:
-  Textbox(int px, int py, int sizex, int sizey, const Pixel & borderstyle);
-  void add_row(std::string);
-private:
-  std::vector<std::string> rows_;
-  void format_img();
-  void init_img();
-  int max_rows_ = 100; //As one pixel is two chars wide
-  int max_cols_ = 100; //This one is twice the "cols" used in other files
-};
 Textbox::Textbox(int px, int py, int sizex, int sizey, 
   const Pixel & borderstyle) {
-  init_img();
   px_ = px;
   py_ = py;
   sizex_ = sizex;
   sizey_ = sizey_;
+  init_img(borderstyle);
+  
   //1. Manually Initialize imgcontainer
   //2. Manually Initialize gameobject
 }
-void Textbox::init_img(){
-  
+void Textbox::init_img(const Pixel & border){
+  //Creates an image filled with spaces and with a border
+
+  for(int y = 0; y < sizey_; ++y){
+    std::vector<Pixel> v;
+    for(int x = 0; x - sizex_; ++x){
+      if(x == 0 || y == 0 || x == sizex_ || y == sizey_){
+       v.push_back(border);
+     }
+     else{
+       Pixel p("  ");
+       v.push_back(p);
+     }
+   }
+   img_.img_txt.push_back(v);
+ }
+
 }
 /*
 void Textbox::add_row(std::string newrow){
@@ -83,4 +77,4 @@ void Textbox::format_img(){
 
   */
 
-#endif
+
