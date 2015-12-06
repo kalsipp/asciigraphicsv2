@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 #include "imgcontainer.hpp"
+
+class Img_container;
 class Gameobject{
 public:
   Gameobject(Img_container & img, int px = 0, int py = 0, int sizex = 0, int sizey = 0);
