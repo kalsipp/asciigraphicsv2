@@ -26,5 +26,9 @@ private:
   void init_img(const Pixel & border);
   int max_rows_ = 100; //As one pixel is two chars wide
   int max_cols_ = 100; //This one is twice the "cols" used in other files
+  int offset_left = 0;
+  int offset_right = 0;
+  int offset_up = 0;
+  int offset_down = 0;
 };
 #endif

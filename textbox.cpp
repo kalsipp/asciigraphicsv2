@@ -17,7 +17,7 @@ Textbox::Textbox(int px, int py, int sizex, int sizey){
   px_ = px;
   py_ = py;
   sizex_ = sizex;
-  sizey_ = sizey;
+  sizey_ = sizey;OB
   Pixel p;
   init_img(p);
 }
@@ -42,7 +42,33 @@ void Textbox::init_img(const Pixel & border){
 }
 void Textbox::set_border_enabled(bool x){
   border_enabled = x;
+  //And update img to remove border
 }
+
+void Textbox::add_row(std::string newrow){
+  //Add in the new row to the vector
+  if(rows_.size() >= max_rows){
+    for(int i = 0; i < rows_.size(); ++i){
+      rows[i] = rows[i+1];
+    }
+    rows_.pop_back();
+    rows_.push_back(newrow);
+  }
+  
+  //Generate a new image from the stored rows
+  for(int i = 0; i < rows_.size(); ++i){
+    std::string tempstr = rows[i];
+    while (tempstr.length > 1){
+      std::string s;
+      s+= tempstr[0];
+      tempstr.erase(0);
+      s+= tempstr[0];
+      tempstr.erase(0);
+      Pixel p(s);
+    }
+  }
+}
+
 /*
 void Textbox::add_row(std::string newrow){
   if(rows_.size() > max_rows_){
