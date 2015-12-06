@@ -64,6 +64,7 @@ void Textbox::add_row(std::string newrow){
       tempstr.erase(0);
       s+= tempstr[0];
       tempstr.erase(0);
+      
       Pixel p(s);
     }
   }
