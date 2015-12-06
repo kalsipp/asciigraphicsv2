@@ -1,0 +1,6 @@
+#include "gameobject.hpp"
+
+class Textbox:public Gameobject{
+
+
+}
