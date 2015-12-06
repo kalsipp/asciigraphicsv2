@@ -17,7 +17,7 @@ Textbox::Textbox(int px, int py, int sizex, int sizey){
   px_ = px;
   py_ = py;
   sizex_ = sizex;
-  sizey_ = sizey;OB
+  sizey_ = sizey;
   Pixel p;
   init_img(p);
 }
@@ -40,34 +40,62 @@ void Textbox::init_img(const Pixel & border){
  }
 
 }
-void Textbox::set_border_enabled(bool x){
-  border_enabled = x;
-  //And update img to remove border
-}
 
 void Textbox::add_row(std::string newrow){
   //Add in the new row to the vector
-  if(rows_.size() >= max_rows){
-    for(int i = 0; i < rows_.size(); ++i){
-      rows[i] = rows[i+1];
+  update_area();
+  //std::cout << "new go " << std::endl;
+  if(rows_.size() >= max_rows_){
+    for(int i = 0; i <= rows_.size()-2; ++i){
+      //std::cout << "i " << i <<std::endl;
+      //std::cout << "size " << rows_.size() << std::endl;
+      rows_[i] = rows_[i+1];
     }
     rows_.pop_back();
     rows_.push_back(newrow);
   }
-  
+  else{
+    rows_.push_back(newrow);
+  }
+  //std::cout << "Put the new row in place" << std::endl;
   //Generate a new image from the stored rows
+  int py =  offset_up;
   for(int i = 0; i < rows_.size(); ++i){
-    std::string tempstr = rows[i];
-    while (tempstr.length > 1){
+    //std::cout << "Next row... " << std::endl;
+    int px =  offset_left;
+    std::string tempstr = rows_[i];
+    //std::cout << tempstr << std::endl;
+    while (tempstr.length() > 1 && px < max_cols_){
+      //std::cout << "Next pixel..." << std::endl;
       std::string s;
       s+= tempstr[0];
-      tempstr.erase(0);
+      tempstr.erase(tempstr.begin());
       s+= tempstr[0];
-      tempstr.erase(0);
-      
+      tempstr.erase(tempstr.begin());
       Pixel p(s);
+      //std::cout << "px " << px << std::endl;
+      //std::cout << "py " << py << std::endl;
+      //std::cout << "len " << tempstr << std::endl;
+      //img_.set_pixel(p, px, py);
+      ++px;
     }
+    //If uneven length add in the last char
+    if(tempstr.length() == 1){
+      //std::cout << "Adding last char" << std::endl;
+      std::string s;
+      s += tempstr[0];
+      s += ' ';
+      Pixel p(s);
+      img_.set_pixel(p, px, py);
+    }
+    ++py;
   }
+  //std::cout << "Finished " << std::endl;
+}
+
+void Textbox::update_area(){
+  max_rows_ = sizey_ - offset_up - offset_down;
+  max_cols_ = sizex_ - offset_right - offset_left;
 }
 
 /*

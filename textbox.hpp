@@ -24,11 +24,12 @@ private:
   std::vector<std::string> rows_;
   void format_img();
   void init_img(const Pixel & border);
+  void update_area();
   int max_rows_ = 100; //As one pixel is two chars wide
   int max_cols_ = 100; //This one is twice the "cols" used in other files
-  int offset_left = 0;
-  int offset_right = 0;
-  int offset_up = 0;
-  int offset_down = 0;
+  int offset_left = 2; //nr of pixels
+  int offset_right = 2;
+  int offset_up = 2;
+  int offset_down = 2;
 };
 #endif

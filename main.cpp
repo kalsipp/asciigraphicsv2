@@ -16,6 +16,11 @@ int main(){
 
   p.add_border(pix, 0, 0, p.cols_, p.rows_);
   Textbox tb(0, p.rows_-20, p.cols_, 20, pix);
+  tb.add_row("Hello fagit");
+  tb.add_row("I have come for your penis");
+  for(int i = 0; i < 0; ++i){
+    tb.add_row("asdasf");
+  }
   p.add_image(tb.get_img(), tb.px_, tb.py_);
   p.print();
 }
