@@ -3,7 +3,7 @@
 #include "gameobject.hpp"
 #include <string>
 #include <vector>
-
+class Gameobject;
 class Textbox:public Gameobject{
   /*Textbox handles nicely formatted text output
 The system will simply say "Add row" and the class will append the new text to the bottom, shift the text up and remove the oldest text. 
@@ -23,12 +23,17 @@ private:
   int max_rows_ = 100; //As one pixel is two chars wide
   int max_cols_ = 100; //This one is twice the "cols" used in other files
 };
-Textbox::Textbox(int px, int py, int sizex, int sizey, const Pixel & borderstyle) : px_(px), py_(py), sizex_(sizex), sizey_(sizey){
+Textbox::Textbox(int px, int py, int sizex, int sizey, 
+  const Pixel & borderstyle) {
   init_img();
+  px_ = px;
+  py_ = py;
+  sizex_ = sizex;
+  sizey_ = sizey_;
   //1. Manually Initialize imgcontainer
   //2. Manually Initialize gameobject
 }
-Textbox::init_img(){
+void Textbox::init_img(){
   
 }
 /*
