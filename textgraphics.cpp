@@ -153,9 +153,9 @@ void Textgrafs::add_pixel(const Pixel & p, int px, int py){
   grid[py][px] = p.get_str();
 }
 void Textgrafs::add_border(const Pixel & p, int px, int py, int sizex, int sizey){
-  for(int y = py; y < py+sizey+1; ++y){
-    for(int x = px; x < px+sizex+1; ++x){
-      if(x == px || y == py || x == px+sizex || y == py+sizey){
+  for(int y = py; y < py+sizey; ++y){
+    for(int x = px; x < px+sizex; ++x){
+      if(x == px || y == py || x == px+sizex-1 || y == py+sizey-1){
 	add_pixel(p, x, y);
       }
     }

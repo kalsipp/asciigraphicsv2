@@ -16,11 +16,8 @@ No extra effects added from class
   */
 public:
   Textbox(int px, int py, int sizex, int sizey, const Pixel & borderstyle);
-  Textbox(int px, int py, int sizex, int sizey);
   void add_row(std::string);
-  void set_border_enabled(bool);
 private:
-  bool border_enabled = true;
   std::vector<std::string> rows_;
   void format_img();
   void init_img(const Pixel & border);

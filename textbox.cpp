@@ -6,19 +6,29 @@ Textbox::Textbox(int px, int py, int sizex, int sizey,
   px_ = px;
   py_ = py;
   sizex_ = sizex;
-  sizey_ = sizey_;
+  sizey_ = sizey;
   init_img(borderstyle);
   
   //1. Manually Initialize imgcontainer
   //2. Manually Initialize gameobject
 }
+Textbox::Textbox(int px, int py, int sizex, int sizey){
+  border_enabled = false;
+  px_ = px;
+  py_ = py;
+  sizex_ = sizex;
+  sizey_ = sizey;
+  Pixel p;
+  init_img(p);
+}
+
 void Textbox::init_img(const Pixel & border){
   //Creates an image filled with spaces and with a border
 
   for(int y = 0; y < sizey_; ++y){
     std::vector<Pixel> v;
-    for(int x = 0; x - sizex_; ++x){
-      if(x == 0 || y == 0 || x == sizex_ || y == sizey_){
+    for(int x = 0; x < sizex_; ++x){
+      if(x == 0 || y == 0 || x == sizex_-1 || y == sizey_-1 && border_enabled){
        v.push_back(border);
      }
      else{
@@ -29,6 +39,9 @@ void Textbox::init_img(const Pixel & border){
    img_.img_txt.push_back(v);
  }
 
+}
+void Textbox::set_border_enabled(bool x){
+  border_enabled = x;
 }
 /*
 void Textbox::add_row(std::string newrow){
