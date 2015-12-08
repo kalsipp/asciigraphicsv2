@@ -15,6 +15,8 @@ const std::vector<std::vector<Pixel>> & Img_container::get_img()const{
 }
 Img_container::Img_container(){}
 void Img_container::set_pixel(const Pixel & p, int px, int py){
+  if(py < 0 || py >= img_txt.size()) return;
+  if(px < 0 || px >= img_txt[py].size()) return;
   img_txt[py][px] = p;
 }
 

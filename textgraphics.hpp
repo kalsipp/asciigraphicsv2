@@ -18,15 +18,17 @@ public:
   void add_image(const std::vector<std::vector<Pixel>> &, int px, int py);
   void add_image(const Img_container & img, int px, int py);
   void add_rect(const Pixel & p, int px, int py, int sizex, int sizey);
+  void add_fill(const Pixel & p, int px, int py, int sizex, int sizey);
+  void add_fill(int px, int py, int sizex, int sizey);
   //WIP Should textgrafs hold gameobjects?
-  void add_gameobject(Gameobject & g, int key);
-  void remove_gameobject(int key);
+  void add_gameobject(const Gameobject & g);
   //void remove_gameobject; How should I 
   void print(); //Prints one grid
   bool next_tick(); //Should be private
   void paint(); //For continuous animation
   void clear_screen(); //Empty screen
   void hide_cursor();
+  void show_cursor();
   void cursorpos(int px, int py); //Set cursorpos on screen
   std::string cursorpos_str(int px, int py);
   void fill_grid(const Pixel & p);

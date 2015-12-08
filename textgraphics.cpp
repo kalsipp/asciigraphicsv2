@@ -61,7 +61,10 @@ std::string Textgrafs::cursorpos_str(int px, int py){
   return s;
 }
 void Textgrafs::hide_cursor(){
-  //TODO look up this code
+  std::cout << "\033[?25l";//TODO look up this code
+}
+void Textgrafs::show_cursor(){
+  std::cout << "\033[?25h";
 }
 void Textgrafs::clear_screen(){
   std::cout << "\033[2J";
@@ -102,6 +105,7 @@ void Textgrafs::add_rect(const Pixel & p, int px, int py, int sizex, int sizey){
 }
 void Textgrafs::print(){
   cursorpos(0,0);
+  hide_cursor();
   std::string s;
   for(int y = 0; y < grid.size(); ++y){
     for(int x = 0; x < grid[y].size();++x){
@@ -111,6 +115,7 @@ void Textgrafs::print(){
   }
   s.pop_back();
   std::cout << s;
+  show_cursor();
 }
 void Textgrafs::fill_grid(const Pixel & p){
   for(int y = 0; y < rows_; ++y){
@@ -149,7 +154,10 @@ bool Textgrafs::next_tick(){
 void Textgrafs::add_pixel(const Pixel & p, int px, int py){
   if(px < 0 || px >= cols_) return;
   if(py < 0 || py >= rows_) return;
-
+  //std::cout << "py " << py << std::endl;
+  //std::cout << "px " << px << std::endl;
+  //std::cout << "y size " << grid.size()<<std::endl;
+  //std::cout << "x size " << grid[py].size() <<std::endl;
   grid[py][px] = p.get_str();
 }
 void Textgrafs::add_border(const Pixel & p, int px, int py, int sizex, int sizey){
@@ -161,19 +169,19 @@ void Textgrafs::add_border(const Pixel & p, int px, int py, int sizex, int sizey
     }
   }
 }
-/*
-void Textgrafs::add_gameobject(Gameobject & g, int key){
-  if(objects.count(key) == 0){
-    objects[key] = g;
-  }
-  else{
-    objects.erase(key);
-    objects[key] = g;
-  }
+
+void Textgrafs::add_gameobject(const Gameobject & g){
+  add_image(g.get_img(), g.px_, g.py_);
 }
-void Textgrafs::remove_gameobject(int key){
-  if(objects.count(key) == 1){
-    objects.erase(key);
-  }
+
+void Textgrafs::add_fill(const Pixel & p, int px, int py, int sizex, int sizey){
+  for(int y = py; y < py+sizey; ++y){
+    for(int x = px; x < px+sizex; ++x){
+      add_pixel(p, x, y);
+    }
+  }  
 }
-*/
+void Textgrafs::add_fill(int px, int py, int sizex, int sizey){
+  Pixel p ("  ");
+  add_fill(p, px, py, sizex, sizey);
+}

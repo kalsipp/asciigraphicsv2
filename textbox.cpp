@@ -46,12 +46,13 @@ void Textbox::add_row(std::string newrow){
   update_area();
   //std::cout << "new go " << std::endl;
   if(rows_.size() >= max_rows_){
-    for(int i = 0; i <= rows_.size()-2; ++i){
-      //std::cout << "i " << i <<std::endl;
+    //for(auto i = rows_.begin(); i != rows_.end(); ++i){
+    //  std::cout << "i " << i <<std::endl;
       //std::cout << "size " << rows_.size() << std::endl;
-      rows_[i] = rows_[i+1];
-    }
-    rows_.pop_back();
+    //   i = ++i;
+    //}
+    rows_.erase(rows_.begin());
+      //rows_.pop_back();
     rows_.push_back(newrow);
   }
   else{
@@ -65,28 +66,35 @@ void Textbox::add_row(std::string newrow){
     int px =  offset_left;
     std::string tempstr = rows_[i];
     //std::cout << tempstr << std::endl;
-    while (tempstr.length() > 1 && px < max_cols_){
+    while (px <= max_cols_){
       //std::cout << "Next pixel..." << std::endl;
-      std::string s;
-      s+= tempstr[0];
-      tempstr.erase(tempstr.begin());
-      s+= tempstr[0];
-      tempstr.erase(tempstr.begin());
-      Pixel p(s);
-      //std::cout << "px " << px << std::endl;
-      //std::cout << "py " << py << std::endl;
-      //std::cout << "len " << tempstr << std::endl;
-      //img_.set_pixel(p, px, py);
+      if(tempstr.length() > 1){
+	std::string s;
+	s+= tempstr[0];
+	tempstr.erase(tempstr.begin());
+	s+= tempstr[0];
+	tempstr.erase(tempstr.begin());
+	Pixel p(s);
+	//std::cout << "px " << px << std::endl;
+	//std::cout << "py " << py << std::endl;
+	//std::cout << "len " << tempstr << std::endl;
+	img_.set_pixel(p, px, py);
+      }
+      //If uneven length add in the last char
+      else if(tempstr.length() == 1){
+	//std::cout << "Adding last char" << std::endl;
+	std::string s;
+	s += tempstr[0];
+	tempstr.erase(tempstr.begin());
+	s += ' ';
+	Pixel p(s);
+	img_.set_pixel(p, px, py);
+      }
+      else{
+	Pixel p("  ");
+	img_.set_pixel(p, px, py);
+      }
       ++px;
-    }
-    //If uneven length add in the last char
-    if(tempstr.length() == 1){
-      //std::cout << "Adding last char" << std::endl;
-      std::string s;
-      s += tempstr[0];
-      s += ' ';
-      Pixel p(s);
-      img_.set_pixel(p, px, py);
     }
     ++py;
   }
