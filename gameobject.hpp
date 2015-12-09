@@ -8,7 +8,8 @@
 class Img_container;
 class Gameobject{
 public:
-  Gameobject(Img_container & img, int px = 0, int py = 0, int sizex = 0, int sizey = 0);
+  Gameobject(Img_container & img, int px = 0, int py = 0, int depth = 0);
+  Gameobject(std::string file, int px = 0, int py = 0);
   const Img_container & get_img() const;
   void set_img(const Img_container & img);
   //void set_pixel(const Pixel & p, int px, int py);
@@ -17,6 +18,7 @@ public:
   int sizey_;
   int px_;
   int py_;
+  int depth_= 0;
 private:
 protected:
 

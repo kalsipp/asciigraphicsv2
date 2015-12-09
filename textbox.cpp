@@ -46,13 +46,7 @@ void Textbox::add_row(std::string newrow){
   update_area();
   //std::cout << "new go " << std::endl;
   if(rows_.size() >= max_rows_){
-    //for(auto i = rows_.begin(); i != rows_.end(); ++i){
-    //  std::cout << "i " << i <<std::endl;
-      //std::cout << "size " << rows_.size() << std::endl;
-    //   i = ++i;
-    //}
     rows_.erase(rows_.begin());
-      //rows_.pop_back();
     rows_.push_back(newrow);
   }
   else{

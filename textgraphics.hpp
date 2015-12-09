@@ -22,6 +22,7 @@ public:
   void add_fill(int px, int py, int sizex, int sizey);
   //WIP Should textgrafs hold gameobjects?
   void add_gameobject(const Gameobject & g);
+  void add_gameobjects(const std::vector<Gameobject> & g);
   //void remove_gameobject; How should I 
   void print(); //Prints one grid
   bool next_tick(); //Should be private

@@ -174,6 +174,12 @@ void Textgrafs::add_gameobject(const Gameobject & g){
   add_image(g.get_img(), g.px_, g.py_);
 }
 
+void Textgrafs::add_gameobjects(const std::vector<Gameobject> & g){
+  for(auto i = g.begin(); i != g.end() ; ++i){
+    add_gameobject(*i);
+  }
+}
+
 void Textgrafs::add_fill(const Pixel & p, int px, int py, int sizex, int sizey){
   for(int y = py; y < py+sizey; ++y){
     for(int x = px; x < px+sizex; ++x){

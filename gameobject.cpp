@@ -6,7 +6,18 @@
 //#include <iostream>
 
 
-Gameobject::Gameobject(Img_container & img, int px, int py, int sizex, int sizey):img_(img), px_(px), py_(py), sizex_(sizex), sizey_(sizey){}
+Gameobject::Gameobject(Img_container & img, int px, int py, int depth):img_(img), px_(px), py_(py), depth_(depth){
+  sizey_ = img_.img_txt.size();
+  if(sizey_ != 0) sizex_ = img_.img_txt[0].size();
+}
+
+Gameobject::Gameobject(std::string file, int px, int py){
+  px_ = px;
+  py_ = py;
+  img_.init_img(file);
+  sizey_ = img_.img_txt.size();
+  if(sizey_ != 0) sizex_ = img_.img_txt[0].size();
+}
 Gameobject::Gameobject(){}
 const Img_container & Gameobject::get_img()const { return img_;}
 void Gameobject::set_img(const Img_container & img){img_ = img;}
